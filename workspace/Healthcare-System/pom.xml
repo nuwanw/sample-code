@@ -11,6 +11,7 @@
   <modules>
     <module>Healthcare</module>
     <module>HealthcareRegistry</module>
+    <module>gmailconnector</module>
     <module>HealthcareCompositeApplication</module>
   </modules>
   <build>

@@ -4,6 +4,7 @@
         <inSequence>
             <log description="Request Log" level="custom">
                 <property name="Healthcare" value="welcome"/>
+                <property expression="get-property('uri.var.category')" name="category"/>
             </log>
             <send>
                 <endpoint key="QueryDocter"/>

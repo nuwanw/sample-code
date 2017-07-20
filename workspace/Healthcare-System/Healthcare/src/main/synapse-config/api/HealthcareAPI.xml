@@ -45,7 +45,9 @@
                     <log description="Grand Oka Log" level="custom">
                         <property expression="fn:concat('Routing to ', get-property('Hospital'))" name="Message"/>
                     </log>
-                    <property description="set hospital" name="uri.var.hospital" scope="default" type="STRING" value="grandoaks"/>
+                    <call-template description="call-tmp" target="seqTemplate">
+                        <with-param name="hospital" value="grandoaks"/>
+                    </call-template>
                     <call>
                         <endpoint key="GrandOakEP"/>
                     </call>
@@ -88,6 +90,68 @@
             <call>
                 <endpoint key="SettlePaymentEP"/>
             </call>
+            <respond description="respond"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/v3/categories/{category}/reserve">
+        <inSequence>
+            <property description="Hospital" expression="json-eval($.hospital)" name="Hospital" scope="default" type="STRING"/>
+            <property description="Card Number" expression="json-eval($.cardNo)" name="card_number" scope="default" type="STRING"/>
+            <datamapper config="gov:datamapper/transformRequest.dmc" description="transform" inputSchema="gov:datamapper/transformRequest_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/transformRequest_outputSchema.json" outputType="JSON"/>
+            <switch source="get-property('Hospital')">
+                <case regex="grand oak community hospital">
+                    <log description="Grand Oka Log" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('Hospital'))" name="Message"/>
+                    </log>
+                    <call-template description="call-tmp" target="seqTemplate">
+                        <with-param name="hospital" value="grandoaks"/>
+                    </call-template>
+                    <call>
+                        <endpoint key="GrandOakEP"/>
+                    </call>
+                </case>
+                <case regex="clemency medical center">
+                    <log description="Clemency Log" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('Hospital'))" name="Message"/>
+                    </log>
+                </case>
+                <case regex="pine valley community hospital">
+                    <log description="Pine Valley Log" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('Hospital'))" name="Message"/>
+                    </log>
+                </case>
+                <default>
+                    <log description="Invalid Log" level="custom">
+                        <property expression="fn:concat('Invalid Hospital ', get-property('Hospital'))" name="Message"/>
+                    </log>
+                    <drop description="drop"/>
+                </default>
+            </switch>
+            <property description="AppointmentNumber" expression="json-eval($.appointmentNumber)" name="uri.var.appointment_id" scope="default" type="STRING"/>
+            <property description="doctor_details" expression="json-eval($.doctor)" name="doctor_details" scope="default" type="STRING"/>
+            <property description="patient_details" expression="json-eval($.patient)" name="patient_details" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="ChannelingFeeEP"/>
+            </call>
+            <property description="actual_fee" expression="json-eval($.actualFee)" name="actual_fee" scope="default" type="STRING"/>
+            <payloadFactory description="payload" media-type="json">
+                <format>{"appointmentNumber":$1,"doctor":$2,"patient":$3,"fee":$4,"confirmed":"false","card_number":"$5"}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:uri.var.appointment_id"/>
+                    <arg evaluator="xml" expression="$ctx:doctor_details"/>
+                    <arg evaluator="xml" expression="$ctx:patient_details"/>
+                    <arg evaluator="xml" expression="$ctx:actual_fee"/>
+                    <arg evaluator="xml" expression="$ctx:card_number"/>
+                </args>
+            </payloadFactory>
+            <store description="paymentstore" messageStore="paymentStore"/>
+            <payloadFactory description="client-respond" media-type="json">
+                <format>{"message":" Payment request successfully submitted. Payment confirmation will be sent via email ."}</format>
+                <args/>
+            </payloadFactory>
             <respond description="respond"/>
         </inSequence>
         <outSequence/>
