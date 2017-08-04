@@ -10,11 +10,13 @@
   <description>HealthcareCompositeApplication</description>
   <properties>
     <com.example.Healthcare.sequence_._handleInboundSeq>capp/EnterpriseServiceBus</com.example.Healthcare.sequence_._handleInboundSeq>
+    <org.demo.MyClassMediator_._MyClassMediator>capp/EnterpriseServiceBus</org.demo.MyClassMediator_._MyClassMediator>
     <com.example.Healthcare.endpoint_._PinevalleyEP>capp/EnterpriseServiceBus</com.example.Healthcare.endpoint_._PinevalleyEP>
     <com.example.HealthcareRegistry.resource_._transformRequest_outputSchema>capp/EnterpriseServiceBus</com.example.HealthcareRegistry.resource_._transformRequest_outputSchema>
     <com.example.HealthcareRegistry.resource_._transformRequest>capp/EnterpriseServiceBus</com.example.HealthcareRegistry.resource_._transformRequest>
     <com.example.Healthcare.endpoint_._ClemencyEP>capp/EnterpriseServiceBus</com.example.Healthcare.endpoint_._ClemencyEP>
     <com.example.HealthcareRegistry.resource_._transformRequest_inputSchema>capp/EnterpriseServiceBus</com.example.HealthcareRegistry.resource_._transformRequest_inputSchema>
+    <com.example.data-service.dataservice_._TestDS>capp/DataServicesServer</com.example.data-service.dataservice_._TestDS>
     <com.example.Healthcare.endpoint_._ChannelingFeeEP>capp/EnterpriseServiceBus</com.example.Healthcare.endpoint_._ChannelingFeeEP>
     <com.example.Healthcare.endpoint_._GrandOakEP>capp/EnterpriseServiceBus</com.example.Healthcare.endpoint_._GrandOakEP>
     <com.example.Healthcare.api_._QueryDoctors>capp/EnterpriseServiceBus</com.example.Healthcare.api_._QueryDoctors>
@@ -28,6 +30,7 @@
     <com.example.Healthcare.task_._MyTask>capp/EnterpriseServiceBus</com.example.Healthcare.task_._MyTask>
     <com.example.Healthcare.inbound-endpoint_._QueryDoctorsInBound>capp/EnterpriseServiceBus</com.example.Healthcare.inbound-endpoint_._QueryDoctorsInBound>
     <com.example.Healthcare.endpoint_._QueryDocter>capp/EnterpriseServiceBus</com.example.Healthcare.endpoint_._QueryDocter>
+    <com.example.gmailconnector.lib_._gmail-connector>capp/EnterpriseServiceBus</com.example.gmailconnector.lib_._gmail-connector>
     <com.example.Healthcare.sequence_._paymentProcessingSeq>capp/EnterpriseServiceBus</com.example.Healthcare.sequence_._paymentProcessingSeq>
   </properties>
   <dependencies>
@@ -68,6 +71,12 @@
       <type>xml</type>
     </dependency>
     <dependency>
+      <groupId>com.example.data-service.dataservice</groupId>
+      <artifactId>TestDS</artifactId>
+      <version>1.0.0</version>
+      <type>dbs</type>
+    </dependency>
+    <dependency>
       <groupId>com.example.Healthcare.sequence</groupId>
       <artifactId>handleInboundSeq</artifactId>
       <version>1.0.0</version>
@@ -84,6 +93,17 @@
       <artifactId>PinevalleyEP</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.demo.MyClassMediator</groupId>
+      <artifactId>MyClassMediator</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.example.gmailconnector.lib</groupId>
+      <artifactId>gmail-connector</artifactId>
+      <version>3.0.5</version>
+      <type>zip</type>
     </dependency>
     <dependency>
       <groupId>com.example.Healthcare.inbound-endpoint</groupId>

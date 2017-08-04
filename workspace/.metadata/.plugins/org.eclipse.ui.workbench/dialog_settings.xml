@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="651" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="-1" key="dialogHeight"/>
 		<item value="-1" key="dialogWidth"/>
@@ -10,6 +14,25 @@
 		<list key="orderedProviders">
 		</list>
 		<list key="textArray">
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.wso2.developerstudio.eclipse.artifact.addconnectortoworkspace" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.datatools.connectivity"/>
+			<item value="org.eclipse.jst.j2ee.internal"/>
+			<item value="org.eclipse.rse.ui.newWizards.rseCategory"/>
+			<item value="org.wso2.developerstudio.eclipse.capp.project"/>
+			<item value="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions"/>
+			<item value="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"/>
+			<item value="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation"/>
+			<item value="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.wso2.developerstudio.eclipse.distribution.exportAsArtifact" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.wso2.developerstudio.eclipse.import"/>
 		</list>
 	</section>
 </section>

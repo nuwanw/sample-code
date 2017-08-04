@@ -47,4 +47,7 @@
     <artifact name="ProcessPayment" groupId="com.example.Healthcare.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/message-processors/ProcessPayment.xml</file>
     </artifact>
+    <artifact name="HttpEPTmp" groupId="com.example.Healthcare.template" version="1.0.0" type="synapse/endpointTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/HttpEPTmp.xml</file>
+    </artifact>
 </artifacts>
