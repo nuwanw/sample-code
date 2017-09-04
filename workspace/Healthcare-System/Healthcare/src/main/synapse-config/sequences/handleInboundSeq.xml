@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sequence name="handleInboundSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <call>
-        <endpoint>
-            <address uri="http://localhost:8280/docter/querry"/>
-        </endpoint>
-    </call>
-    <respond description="respond"/>
-</sequence>
