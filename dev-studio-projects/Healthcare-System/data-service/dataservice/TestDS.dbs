@@ -1,0 +1,112 @@
+<data enableBoxcarring="true" name="TestDS" transports="http https local">
+   <config enableOData="false" id="TestDB">
+      <property name="carbon_datasource_name">MY_DS</property>
+   </config>
+   <query id="select" useConfig="TestDB">
+      <sql>select firstname  from MyGuests</sql>
+      <result outputType="json">{&#xd; "entries": {&#xd; "entry": [&#xd; {&#xd; "Name": "$firstname"&#xd; }&#xd; ]&#xd; }&#xd;}</result>
+   </query>
+   <query id="selectById" useConfig="TestDB">
+      <sql>select firstname, lastname  from MyGuests where id=?</sql>
+      <result outputType="json">{&#xd; "entries": {&#xd; "entry": [&#xd; {&#xd; "field1": "$firstname",&#xd; "field2": "$lastname"&#xd; }&#xd; ]&#xd; }&#xd;}</result>
+      <param name="param0" sqlType="STRING"/>
+   </query>
+   <query id="insert" returnGeneratedKeys="true" useConfig="TestDB">
+      <sql>insert into MyGuests(firstname, lastname) values(?,?)</sql>
+      <result element="GeneratedKeys" rowName="Entry" useColumnNumbers="true">
+         <element column="1" export="id" name="ID" xsdType="integer"/>
+      </result>
+      <param name="firstname" sqlType="STRING"/>
+      <param name="lastname" sqlType="STRING"/>
+   </query>
+   <query id="transaction" returnUpdatedRowCount="true" useConfig="TestDB">
+      <sql>update MyGuests set firstname='Nuwan' where id=?;</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="nested" returnUpdatedRowCount="true" useConfig="TestDB">
+      <sql>update MyGuests set firstname='updated' where id=?</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+         <call-query href="selectById" requiredRoles="">
+            <with-param name="param0" query-param="id"/>
+         </call-query>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="selectWithNamePara" useConfig="TestDB">
+      <sql>select firstname, lastname  from MyGuests where id=:id</sql>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="selectAll" useConfig="TestDB">
+      <sql>select *  from MyGuests</sql>
+   </query>
+   <query id="selectPost" useConfig="TestDB">
+      <sql>select firstname, lastname  from MyGuests where id=:id</sql>
+      <result element="Entries" rowName="Entry">
+         <element column="firstname" name="firstname" xsdType="string"/>
+         <element column="lastname" name="lastname" xsdType="string"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="callSPSelect" useConfig="TestDB">
+      <sql>call GetEmployeeByID(:id)</sql>
+      <result element="employes" rowName="employ">
+         <element column="firstname" name="FirstName" xsdType="string"/>
+         <element column="lastname" name="LastName" xsdType="string"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="callspinout" useConfig="TestDB">
+      <sql>call GetMemberCount(?, ?);</sql>
+      <result element="MemberCountEle" rowName="count">
+         <element column="memberCount" name="MemberCount" xsdType="integer"/>
+      </result>
+      <param name="firstName" sqlType="STRING"/>
+      <param name="memberCount" sqlType="INTEGER" type="OUT"/>
+   </query>
+   <resource method="GET" path="/employe">
+      <call-query href="select"/>
+   </resource>
+   <resource method="GET" path="/employe/{param0}">
+      <call-query href="selectById">
+         <with-param name="param0" query-param="param0"/>
+      </call-query>
+   </resource>
+   <resource method="POST" path="/employe">
+      <call-query href="insert">
+         <with-param name="firstname" query-param="firstname"/>
+         <with-param name="lastname" query-param="lastname"/>
+      </call-query>
+   </resource>
+   <resource method="POST" path="/transaction">
+      <call-query href="transaction">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="/nested/{id}">
+      <call-query href="nested">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="selectall">
+      <call-query href="selectAll"/>
+   </resource>
+   <resource method="POST" path="/selectPost">
+      <call-query href="selectPost">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="callspselect/{id}">
+      <call-query href="callSPSelect">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="callspinout/{firstName}">
+      <call-query href="callspinout">
+         <with-param name="firstName" query-param="firstName"/>
+      </call-query>
+   </resource>
+</data>

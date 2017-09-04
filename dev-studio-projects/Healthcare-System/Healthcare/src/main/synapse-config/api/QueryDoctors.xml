@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/doctor" name="QueryDoctors" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/query/{category}">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="Healthcare" value="welcome"/>
+                <property expression="get-property('uri.var.category')" name="category"/>
+            </log>
+            <send>
+                <endpoint key="QueryDocter"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <drop/>
+        </faultSequence>
+    </resource>
+</api>

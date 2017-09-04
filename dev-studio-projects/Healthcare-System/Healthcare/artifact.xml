@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="GrandOakEP" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GrandOakEP.xml</file>
+    </artifact>
+    <artifact name="ClemencyEP" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ClemencyEP.xml</file>
+    </artifact>
+    <artifact name="PinevalleyEP" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PinevalleyEP.xml</file>
+    </artifact>
+    <artifact name="HealthcareAPI" groupId="com.example.Healthcare.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/HealthcareAPI.xml</file>
+    </artifact>
+    <artifact name="QueryDocter" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/QueryDocter.xml</file>
+    </artifact>
+    <artifact name="QueryDoctors" groupId="com.example.Healthcare.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/QueryDoctors.xml</file>
+    </artifact>
+    <artifact name="QueryDoctorsInBound" groupId="com.example.Healthcare.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/QueryDoctorsInBound.xml</file>
+    </artifact>
+    <artifact name="handleInboundSeq" groupId="com.example.Healthcare.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/handleInboundSeq.xml</file>
+    </artifact>
+    <artifact name="ChannelingFeeEP" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ChannelingFeeEP.xml</file>
+    </artifact>
+    <artifact name="SettlePaymentEP" groupId="com.example.Healthcare.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/SettlePaymentEP.xml</file>
+    </artifact>
+    <artifact name="taskSeq" groupId="com.example.Healthcare.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/taskSeq.xml</file>
+    </artifact>
+    <artifact name="MyTask" groupId="com.example.Healthcare.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/tasks/MyTask.xml</file>
+    </artifact>
+    <artifact name="seqTemplate" groupId="com.example.Healthcare.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/seqTemplate.xml</file>
+    </artifact>
+    <artifact name="paymentStore" groupId="com.example.Healthcare.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/paymentStore.xml</file>
+    </artifact>
+    <artifact name="paymentProcessingSeq" groupId="com.example.Healthcare.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/paymentProcessingSeq.xml</file>
+    </artifact>
+    <artifact name="ProcessPayment" groupId="com.example.Healthcare.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/ProcessPayment.xml</file>
+    </artifact>
+    <artifact name="HttpEPTmp" groupId="com.example.Healthcare.template" version="1.0.0" type="synapse/endpointTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/HttpEPTmp.xml</file>
+    </artifact>
+</artifacts>
