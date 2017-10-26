@@ -17,14 +17,19 @@
 */
 package org.mock.demo;
 
-public class Utils {
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.testng.PowerMockTestCase;
+import org.testng.annotations.Test;
 
-    public static double sum(double a, double b) {
-        System.out.println("****sum***");
-        return a + b;
-    }
+import static org.mockito.ArgumentMatchers.any;
 
-    public static void foo(String name) throws Exception {
-        throw new Exception();
+@PrepareForTest(Utils.class)
+public class MockStaticTest extends PowerMockTestCase {
+
+    @Test()
+    public void testStaticVoidMethod() throws Exception {
+        PowerMockito.mockStatic(Utils.class);
+        PowerMockito.doNothing().when(Utils.class, "foo", any(String.class));
     }
 }
