@@ -41,6 +41,10 @@ public class Employ {
         return salary;
     }
 
+    public void foo(String name) throws Exception {
+        Utils.foo(name);
+    }
+
     public String getName() {
         return this.name;
     }

@@ -31,5 +31,7 @@ public class MockStaticTest extends PowerMockTestCase {
     public void testStaticVoidMethod() throws Exception {
         PowerMockito.mockStatic(Utils.class);
         PowerMockito.doNothing().when(Utils.class, "foo", any(String.class));
+        Employ employ = new Employ();
+        employ.foo("bar");
     }
 }
