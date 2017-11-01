@@ -17,10 +17,14 @@
 */
 package org.mock.demo;
 
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.testng.PowerMockTestCase;
 import org.testng.annotations.Test;
+
+import javax.xml.ws.handler.MessageContext;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -30,7 +34,34 @@ public class MockStaticTest extends PowerMockTestCase {
     @Test()
     public void testStaticVoidMethod() throws Exception {
         PowerMockito.mockStatic(Utils.class);
+//        PowerMockito.doNothing().doThrow(new RuntimeException()).when(Utils.class);
         PowerMockito.doNothing().when(Utils.class, "foo", any(String.class));
+        Employ employ = new Employ();
+        employ.foo("bar");
+    }
+
+    @Test()
+    public void testDoAnswer() throws Exception {
+        PowerMockito.mockStatic(Utils.class);
+        PowerMockito.doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                System.out.println("DoAnswer works" + invocation.getArgument(0));
+                return null;
+            }
+        }).when(Utils.class, "foo", any(String.class));
+        Employ employ = new Employ();
+        employ.foo("bar");
+    }
+
+    @Test()
+    public void testDoAnswerReturn() throws Exception {
+        PowerMockito.mockStatic(Utils.class);
+        PowerMockito.doAnswer(new Answer<String>() {
+            public String answer(InvocationOnMock invocation) {
+                String s = invocation.getArgument(0);
+                return s;
+            }
+        }).when(Utils.class, "foo", any(String.class));
         Employ employ = new Employ();
         employ.foo("bar");
     }
