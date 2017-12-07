@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="MessageListener" startOnLoad="true" transports="jms" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full">
+                <property name="Server" value="Received from WSO2 MB"/>
+            </log>
+            <drop/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.jms.DestinationType">queue</parameter>
+    <parameter name="transport.jms.Destination">MyEITestQueue</parameter>
+    <parameter name="transport.jms.ContentType">
+        <rules>
+            <jmsProperty>contentType</jmsProperty>
+            <default>application/json</default>
+        </rules>
+    </parameter>
+    <parameter name="transport.jms.ConnectionFactory">myQueueConnectionFactory</parameter>
+</proxy>

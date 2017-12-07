@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/publishToMB" name="PublishMessage" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST GET" url-mapping="/*">
+        <inSequence>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <payloadFactory media-type="json">
+                <format>{"msg" : "WSO2 MB"}</format>
+                <args/>
+            </payloadFactory>
+            <log level="custom">
+                <property name="Message" value="Sending message to WSO2 MB"/>
+            </log>
+            <call>
+                <endpoint>
+                    <address uri="jms:/MyEITestQueue?transport.jms.ConnectionFactoryJNDIName=QueueConnectionFactory&amp;java.naming.factory.initial=org.wso2.andes.jndi.PropertiesFileInitialContextFactory&amp;java.naming.provider.url=conf/jndi.properties&amp;transport.jms.DestinationType=queue"/>
+                </endpoint>
+            </call>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="false"/>
+            <payloadFactory media-type="json">
+                <format>{"msg" : "SUCCESS"}</format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
