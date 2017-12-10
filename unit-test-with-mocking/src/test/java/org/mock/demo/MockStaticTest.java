@@ -45,7 +45,7 @@ public class MockStaticTest extends PowerMockTestCase {
         PowerMockito.mockStatic(Utils.class);
         PowerMockito.doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
-                System.out.println("DoAnswer works" + invocation.getArgument(0));
+                System.out.println("DoAnswer works : args " + invocation.getArgument(0));
                 return null;
             }
         }).when(Utils.class, "foo", any(String.class));
