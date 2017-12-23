@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><artifacts>
-    <artifact name="MessageListener" groupId="com.example.MB-Integration.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/proxy-services/MessageListener.xml</file>
+    <artifact name="QueueMessageListenerProxy" groupId="com.example.MB-Integration.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/QueueMessageListenerProxy.xml</file>
     </artifact>
-    <artifact name="PublishMessage" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/api/PublishMessage.xml</file>
+    <artifact name="TopicMessageListenerProxy" groupId="com.example.MB-Integration.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/TopicMessageListenerProxy.xml</file>
+    </artifact>
+    <artifact name="PublishMessageToQueueAPI" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/PublishMessageToQueueAPI.xml</file>
+    </artifact>
+    <artifact name="PublishMessageToTopicAPI" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/PublishMessageToTopicAPI.xml</file>
+    </artifact>
+    <artifact name="LogErrorSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LogErrorSeq.xml</file>
+    </artifact>
+    <artifact name="LogMsgSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LogMsgSeq.xml</file>
+    </artifact>
+    <artifact name="QueueTopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/QueueTopicInboundListener.xml</file>
+    </artifact>
+    <artifact name="TopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/TopicInboundListener.xml</file>
+    </artifact>
+    <artifact name="DurableTopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/DurableTopicInboundListener.xml</file>
     </artifact>
 </artifacts>
