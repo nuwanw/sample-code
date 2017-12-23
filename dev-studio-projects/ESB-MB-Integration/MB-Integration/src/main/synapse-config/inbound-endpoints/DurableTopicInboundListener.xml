@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inboundEndpoint name="DurableTopicInboundListener" onError="LogErrorSeq" protocol="jms" sequence="LogMsgSeq" suspend="false" xmlns="http://ws.apache.org/ns/synapse">
+    <parameters>
+        <parameter name="interval">1000</parameter>
+        <parameter name="sequential">true</parameter>
+        <parameter name="coordination">true</parameter>
+        <parameter name="transport.jms.Destination">TestInboundTopicDurable</parameter>
+        <parameter name="transport.jms.CacheLevel">3</parameter>
+        <parameter name="transport.jms.ConnectionFactoryJNDIName">TopicConnectionFactory</parameter>
+        <parameter name="java.naming.factory.initial">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+        <parameter name="java.naming.provider.url">conf/jndi.properties</parameter>
+        <parameter name="transport.jms.SessionAcknowledgement">AUTO_ACKNOWLEDGE</parameter>
+        <parameter name="transport.jms.SessionTransacted">false</parameter>
+        <parameter name="transport.jms.SubscriptionDurable">true</parameter>
+        <parameter name="transport.jms.ConnectionFactoryType">topic</parameter>
+        <parameter name="transport.jms.DurableSubscriberClientID">test_inbound_sbscrb</parameter>
+        <parameter name="transport.jms.ContentType">application/json</parameter>
+        <parameter name="transport.jms.DurableSubscriberName">test_inbound_sbscrb</parameter>
+        <parameter name="transport.jms.SharedSubscription">false</parameter>
+    </parameters>
+</inboundEndpoint>
