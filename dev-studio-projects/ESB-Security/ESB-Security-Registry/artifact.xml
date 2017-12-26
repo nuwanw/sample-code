@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="UTPolicy" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>UTPolicy.xml</file>
+            <path>/_system/governance/security</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="BackendPolicy" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>BackendPolicy.xml</file>
+            <path>/_system/governance/security</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+        </item>
+    </artifact>
+</artifacts>
