@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="InvokedUTSecuredService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log description="logMsg" level="custom">
+                <property name="msg" value="Invoking Secured Service"/>
+            </log>
+            <send>
+                <endpoint>
+                    <address uri="https://localhost:8243/services/UTSecuredProxy">
+                        <enableAddressing version="final"/>
+                        <enableSec policy="gov:security/BackendPolicy.xml"/>
+                    </address>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <payloadFactory description="error" media-type="xml">
+                <format>
+                    <error xmlns="">$1</error>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </target>
+</proxy>

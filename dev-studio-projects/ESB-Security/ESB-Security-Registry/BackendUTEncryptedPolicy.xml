@@ -26,7 +26,7 @@
                             <sp:Lax/>
                         </wsp:Policy>
                     </sp:Layout>
-                    <sp:IncludeTimestamp/>
+                     <sp:IncludeTimestamp/>
                     <sp:OnlySignEntireHeadersAndBody/>
                 </wsp:Policy>
             </sp:SymmetricBinding>
@@ -62,7 +62,8 @@
     </wsp:ExactlyOne>
     <rampart:RampartConfig xmlns:rampart="http://ws.apache.org/rampart/policy">
         <rampart:user>admin</rampart:user>
-        <rampart:encryptionUser>useReqSigCert</rampart:encryptionUser>
+        <rampart:passwordCallbackClass>org.demo.PWCallbackHandler</rampart:passwordCallbackClass>
+        <rampart:encryptionUser>wso2carbon</rampart:encryptionUser>
         <rampart:timestampPrecisionInMilliseconds>true</rampart:timestampPrecisionInMilliseconds>
         <rampart:timestampTTL>300</rampart:timestampTTL>
         <rampart:timestampMaxSkew>300</rampart:timestampMaxSkew>
@@ -90,9 +91,4 @@
             </rampart:crypto>
         </rampart:signatureCrypto>
     </rampart:RampartConfig>
-    <sec:CarbonSecConfig xmlns:sec="http://www.wso2.org/products/carbon/security">
-        <sec:Authorization>
-            <sec:property name="org.wso2.carbon.security.allowedroles">admin</sec:property>
-        </sec:Authorization>
-    </sec:CarbonSecConfig>
 </wsp:Policy>

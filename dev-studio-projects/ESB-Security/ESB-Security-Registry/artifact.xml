@@ -6,9 +6,23 @@
             <mediaType>application/wspolicy+xml</mediaType>
         </item>
     </artifact>
-    <artifact name="BackendPolicy" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+    <artifact name="BackendUTPolicy" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
         <item>
-            <file>BackendPolicy.xml</file>
+            <file>BackendUTPolicy.xml</file>
+            <path>/_system/governance/security</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="UTEncrypted" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>UTEncrypted.xml</file>
+            <path>/_system/governance/security</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="BackendUTEncryptedPolicy" groupId="com.example.ESB-Security-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>BackendUTEncryptedPolicy.xml</file>
             <path>/_system/governance/security</path>
             <mediaType>application/wspolicy+xml</mediaType>
         </item>

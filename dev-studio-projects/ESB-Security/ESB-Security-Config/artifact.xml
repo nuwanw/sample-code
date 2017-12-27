@@ -2,7 +2,13 @@
     <artifact name="UTSecuredProxy" groupId="com.example.ESB-Security-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/UTSecuredProxy.xml</file>
     </artifact>
-    <artifact name="InvokedSecuredService" groupId="com.example.ESB-Security-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/proxy-services/InvokedSecuredService.xml</file>
+    <artifact name="InvokedUTSecuredService" groupId="com.example.ESB-Security-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/InvokedUTSecuredService.xml</file>
+    </artifact>
+    <artifact name="UTEncryptedProxy" groupId="com.example.ESB-Security-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/UTEncryptedProxy.xml</file>
+    </artifact>
+    <artifact name="InvokeUTEncryptedService" groupId="com.example.ESB-Security-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/InvokeUTEncryptedService.xml</file>
     </artifact>
 </artifacts>
