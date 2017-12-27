@@ -11,8 +11,8 @@
     <artifact name="PublishMessageToTopicAPI" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/PublishMessageToTopicAPI.xml</file>
     </artifact>
-    <artifact name="QueueTopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/inbound-endpoints/QueueTopicInboundListener.xml</file>
+    <artifact name="QueueInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/QueueInboundListener.xml</file>
     </artifact>
     <artifact name="TopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/inbound-endpoints/TopicInboundListener.xml</file>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/publishToMB" name="PublishMessageToQueueAPI" xmlns="http://ws.apache.org/ns/synapse">
+<api context="/publishToMBQueue" name="PublishMessageToQueueAPI" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="POST GET" url-mapping="/*">
         <inSequence>
             <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
