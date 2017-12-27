@@ -26,7 +26,6 @@
                             <sp:Lax/>
                         </wsp:Policy>
                     </sp:Layout>
-                    <sp:IncludeTimestamp/>
                     <sp:OnlySignEntireHeadersAndBody/>
                 </wsp:Policy>
             </sp:SymmetricBinding>

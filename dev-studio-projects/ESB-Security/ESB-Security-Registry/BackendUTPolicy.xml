@@ -35,8 +35,6 @@
 	</wsp:ExactlyOne>
 	<rampart:RampartConfig xmlns:rampart="http://ws.apache.org/rampart/policy">
 		<rampart:user>admin</rampart:user>
-		<rampart:passwordCallbackClass>org.demo.PWCallbackHandler
-		</rampart:passwordCallbackClass>
-			
+		<rampart:passwordCallbackClass>org.demo.PWCallbackHandler</rampart:passwordCallbackClass>			
 	</rampart:RampartConfig>
 </wsp:Policy>
