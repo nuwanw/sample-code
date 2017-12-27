@@ -16,5 +16,6 @@
 	<classpathentry exported="true" kind="var" path="ECLIPSE_WORKSPACE/.metadata/.plugins/org.wso2.developerstudio.eclipse.esb.libraries/lib/XmlSchema_1.4.7.wso2v3.jar"/>
 	<classpathentry exported="true" kind="var" path="ECLIPSE_WORKSPACE/.metadata/.plugins/org.wso2.developerstudio.eclipse.esb.libraries/lib/woden_1.0.0.M9-wso2v1.jar"/>
 	<classpathentry kind="lib" path="/Users/nuwanw/wso2/git/nuwanw/sample-code/dev-studio-projects/ESB-Security/CallbackHandler/lib/wss4j_1.5.11.wso2v14.jar"/>
+	<classpathentry kind="lib" path="/Users/nuwanw/wso2/git/nuwanw/sample-code/dev-studio-projects/ESB-Security/CallbackHandler/lib/axis2_1.6.1.wso2v20.jar"/>
 	<classpathentry kind="output" path="target"/>
 </classpath>
