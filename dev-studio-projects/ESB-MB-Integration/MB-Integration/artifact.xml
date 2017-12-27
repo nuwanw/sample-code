@@ -11,12 +11,6 @@
     <artifact name="PublishMessageToTopicAPI" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/PublishMessageToTopicAPI.xml</file>
     </artifact>
-    <artifact name="LogErrorSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/sequences/LogErrorSeq.xml</file>
-    </artifact>
-    <artifact name="LogMsgSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/sequences/LogMsgSeq.xml</file>
-    </artifact>
     <artifact name="QueueTopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/inbound-endpoints/QueueTopicInboundListener.xml</file>
     </artifact>
@@ -25,5 +19,11 @@
     </artifact>
     <artifact name="DurableTopicInboundListener" groupId="com.example.MB-Integration.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/inbound-endpoints/DurableTopicInboundListener.xml</file>
+    </artifact>
+    <artifact name="LogMsgSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LogMsgSeq.xml</file>
+    </artifact>
+    <artifact name="LogErrorSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LogErrorSeq.xml</file>
     </artifact>
 </artifacts>
