@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="DefaultEndpointTest" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property expression="$trp:Service-Name" name="service" scope="default" type="STRING"/>
+            <header expression="fn:concat('http://localhost:9000/services/',$ctx:service)" name="To" scope="default"/>
+            <log description="To" level="custom">
+                <property expression="get-property('To')" name="To"/>
+            </log>
+            <send>
+                <endpoint>
+                    <default/>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>
