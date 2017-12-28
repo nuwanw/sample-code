@@ -26,4 +26,7 @@
     <artifact name="LogErrorSeq" groupId="com.example.MB-Integration.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/LogErrorSeq.xml</file>
     </artifact>
+    <artifact name="PublishMessageToQueueAPI2" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/PublishMessageToQueueAPI2.xml</file>
+    </artifact>
 </artifacts>
