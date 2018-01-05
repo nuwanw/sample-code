@@ -10,8 +10,10 @@
   <description>ESB-MB-Integration</description>
   <modules>
     <module>MB-Integration</module>
+    <!--  
     <module>MB-IntegrationRegistry</module>
     <module>MB-IntegrationConnectorExporter</module>
+    -->
     <module>MB-Integration-App</module>
   </modules>
   <build>
