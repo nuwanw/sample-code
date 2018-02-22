@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/basicauth" name="TestBasicAuth" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/set1">
+        <inSequence>
+            <property expression="fn:concat('username', ':', wso2:vault-lookup('password'))" name="basic_auth" scope="default" type="STRING"/>
+            <property expression="fn:concat('Basic ', base64Encode($ctx:basic_auth))" name="Authorization" scope="transport" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://localhost:8290/myservice"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/set2">
+        <inSequence>
+            <property expression="base64Encode(fn:concat('user', ':', wso2:vault-lookup('password')))" name="basic_auth" scope="default" type="STRING"/>
+            <property expression="fn:concat('Basic ', $ctx:basic_auth)" name="Authorization" scope="transport" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://localhost:8290/"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/set3">
+        <inSequence>
+            <property expression="fn:concat('Basic ', base64Encode(wso2:vault-lookup('basic_auth_value')))" name="Authorization" scope="transport" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://localhost:8290/"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

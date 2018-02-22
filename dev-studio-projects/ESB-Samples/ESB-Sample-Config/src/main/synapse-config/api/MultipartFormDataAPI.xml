@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/multipart" name="MultipartFormDataAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <root>
+                        <attributes>{"name":"myfile.txt", "parent":{"id":"12345678"}}</attributes>
+                        <fileUpload filename="">file contenet goes here</fileUpload>
+                    </root>
+                </format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="multipart/form-data"/>
+            <property name="mimeBoundary" scope="axis2" type="STRING" value="boundary_string"/>
+            <call>
+                <endpoint>
+                    <http method="post" uri-template="https://upload.file.content"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

@@ -2,4 +2,13 @@
     <artifact name="DefaultEndpointTest" groupId="com.example.ESB-Sample-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/DefaultEndpointTest.xml</file>
     </artifact>
+    <artifact name="MyEPDefaultConfig" groupId="com.example.ESB-Sample-Config.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/MyEPDefaultConfig.xml</file>
+    </artifact>
+    <artifact name="TestBasicAuth" groupId="com.example.ESB-Sample-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TestBasicAuth.xml</file>
+    </artifact>
+    <artifact name="MultipartFormDataAPI" groupId="com.example.ESB-Sample-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/MultipartFormDataAPI.xml</file>
+    </artifact>
 </artifacts>
