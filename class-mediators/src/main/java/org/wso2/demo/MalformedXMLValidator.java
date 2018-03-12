@@ -32,6 +32,7 @@ public class MalformedXMLValidator extends AbstractMediator implements ManagedLi
     @Override
     public boolean mediate(MessageContext synCtx) {
         try {
+            synCtx.getEnvelope().buildWithAttachments();
             synCtx.getEnvelope().getBody().getFirstElement().buildNext();
         } catch (Exception e) {
             synCtx.setProperty(SynapseConstants.ERROR_CODE, 00010);
