@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ConsumeRabbitMQMessage" startOnLoad="true" transports="rabbitmq" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full">
+                <property name="Consumer" value="Reading from queue"/>
+            </log>
+            <drop/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property expression="$ctx:ERROR_MESSAGE" name="ConsumeRabbitMQMessage fault"/>
+            </log>
+        </faultSequence>
+    </target>
+    <parameter name="rabbitmq.queue.routing.key">fromesb</parameter>
+    <parameter name="rabbitmq.queue.durable">true</parameter>
+    <parameter name="rabbitmq.exchange.name">amq.direct</parameter>
+    <parameter name="rabbitmq.queue.name">fromesb</parameter>
+    <parameter name="rabbitmq.connection.factory">AMQPConnectionFactory</parameter>
+    <parameter name="rabbitmq.message.content.type">application/xml</parameter>
+</proxy>

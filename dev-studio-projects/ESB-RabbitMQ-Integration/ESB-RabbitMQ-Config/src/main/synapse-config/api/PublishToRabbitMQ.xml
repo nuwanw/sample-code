@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/publishtorabbitmq" name="PublishToRabbitMQ" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <mgs xmlns="">RabbitMQ</mgs>
+                </format>
+                <args/>
+            </payloadFactory>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <call>
+                <endpoint>
+                    <address uri="rabbitmq:/fromesb?rabbitmq.server.host.name=localhost&amp;rabbitmq.server.port=5672&amp;rabbitmq.server.user.name=guest&amp;rabbitmq.server.password=guest&amp;rabbitmq.queue.name=fromesb&amp;rabbitmq.exchange.name=amq.direct"/>
+                </endpoint>
+            </call>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="fasle"/>
+            <payloadFactory media-type="xml">
+                <format>
+                    <mgs xmlns="">Message Sent</mgs>
+                </format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <mgs xmlns="">Message Sent failed. $1</mgs>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>
