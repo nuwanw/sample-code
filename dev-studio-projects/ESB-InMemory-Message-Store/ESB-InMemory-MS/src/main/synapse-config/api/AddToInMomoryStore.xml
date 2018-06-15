@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/addtoinmomorystore" name="AddToInMomoryStore" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <store messageStore="InMemoryStore"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

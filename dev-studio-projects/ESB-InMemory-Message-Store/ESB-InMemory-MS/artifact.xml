@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="InMemoryStore" groupId="com.example.ESB-InMemory-MS.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/InMemoryStore.xml</file>
+    </artifact>
+    <artifact name="InMemorySamplingProcessor" groupId="com.example.ESB-InMemory-MS.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/InMemorySamplingProcessor.xml</file>
+    </artifact>
+    <artifact name="logInMemoryMessageSeq" groupId="com.example.ESB-InMemory-MS.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/logInMemoryMessageSeq.xml</file>
+    </artifact>
+    <artifact name="AddToInMomoryStore" groupId="com.example.ESB-InMemory-MS.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/AddToInMomoryStore.xml</file>
+    </artifact>
+</artifacts>
