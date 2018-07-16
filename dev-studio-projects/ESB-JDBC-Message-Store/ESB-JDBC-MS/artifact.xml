@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="JDBC-MS" groupId="com.example.ESB-JDBC-MS.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/JDBC-MS.xml</file>
+    </artifact>
+    <artifact name="AddToStore" groupId="com.example.ESB-JDBC-MS.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/AddToStore.xml</file>
+    </artifact>
+    <artifact name="BackendAPI" groupId="com.example.ESB-JDBC-MS.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/BackendAPI.xml</file>
+    </artifact>
+    <artifact name="BackendEP" groupId="com.example.ESB-JDBC-MS.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/BackendEP.xml</file>
+    </artifact>
+    <artifact name="JDBCMessageProcessor" groupId="com.example.ESB-JDBC-MS.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/JDBCMessageProcessor.xml</file>
+    </artifact>
+    <artifact name="logSeq" groupId="com.example.ESB-JDBC-MS.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/logSeq.xml</file>
+    </artifact>
+    <artifact name="deactivateSeq" groupId="com.example.ESB-JDBC-MS.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/deactivateSeq.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/addtojdbcstore" name="AddToStore" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log level="custom">
+                <property name="Store" value="Add to JDBC Store"/>
+            </log>
+            <store description="store" messageStore="JDBC-MS"/>
+            <payloadFactory description="payload" media-type="xml">
+                <format>
+                    <msg xmlns="">OK</msg>
+                </format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <msg xmlns="">ERROR</msg>
+                </format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>

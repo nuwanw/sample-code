@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messageProcessor class="org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor" messageStore="JDBC-MS" name="JDBCMessageProcessor" targetEndpoint="BackendEP" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="client.retry.interval">5000</parameter>
+    <parameter name="max.delivery.attempts">4</parameter>
+    <parameter name="member.count">1</parameter>
+    <parameter name="message.processor.reply.sequence">logSeq</parameter>
+    <parameter name="message.processor.fault.sequence">fault</parameter>
+    <parameter name="max.delivery.drop">Disabled</parameter>
+    <parameter name="interval">2000</parameter>
+    <parameter name="message.processor.deactivate.sequence">deactivateSeq</parameter>
+    <parameter name="is.active">true</parameter>
+</messageProcessor>

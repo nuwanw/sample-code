@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/jdbcbackendapi" name="BackendAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log level="custom">
+                <property name="Backend" value="Backend Invoked"/>
+            </log>
+            <script language="js"><![CDATA[java.lang.Thread.sleep(2000);]]></script>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

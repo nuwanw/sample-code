@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="logSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="logmsg" level="custom">
+        <property name="Reply From Backend" value="Received"/>
+    </log>
+</sequence>

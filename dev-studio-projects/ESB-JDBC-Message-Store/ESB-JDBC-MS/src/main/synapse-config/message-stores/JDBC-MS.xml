@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messageStore class="org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore" name="JDBC-MS" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="store.jdbc.dsName">jdbc/jdbc_ms_db</parameter>
+    <parameter name="store.producer.guaranteed.delivery.enable">false</parameter>
+    <parameter name="store.jdbc.table">jdbc_message_store</parameter>
+</messageStore>
