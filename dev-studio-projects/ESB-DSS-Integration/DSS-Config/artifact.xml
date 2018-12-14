@@ -1,1 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="employeeservice" groupId="com.example.DSS-Config.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/employeeservice.dbs</file>
+    </artifact>
+    <artifact name="empservice" groupId="com.example.DSS-Config.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/empservice.dbs</file>
+    </artifact>
+    <artifact name="sleep" groupId="com.example.DSS-Config.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/sleep.dbs</file>
+    </artifact>
+</artifacts>

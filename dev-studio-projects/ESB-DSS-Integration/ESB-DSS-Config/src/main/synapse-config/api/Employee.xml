@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/employee" name="Employee" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/{id}">
+        <inSequence>
+            <property expression="$ctx:uri.var.id" name="REST_URL_POSTFIX" scope="axis2" type="STRING"/>
+            <call>
+                <endpoint key="EmployeeDSSEP"/>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

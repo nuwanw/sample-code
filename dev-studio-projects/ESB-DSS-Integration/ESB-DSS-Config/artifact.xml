@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Employee" groupId="com.example.ESB-DSS-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Employee.xml</file>
+    </artifact>
+    <artifact name="EmployeeDSSEP" groupId="com.example.ESB-DSS-Config.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/EmployeeDSSEP.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="EmployeeDSSEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http uri-template="http://localhost:8280/services/employeeservice/employee"/>
+</endpoint>

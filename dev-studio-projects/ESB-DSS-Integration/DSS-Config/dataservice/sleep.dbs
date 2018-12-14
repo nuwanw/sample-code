@@ -1,0 +1,23 @@
+<data name="sleep" transports="http https">
+   <config enableOData="false" id="EmpDb">
+      <property name="carbon_datasource_name">TestDBEmp</property>
+   </config>
+   <query id="sleep" useConfig="EmpDb">
+      <sql>select id,name from employee where id = 100 OR sleep(:Count);</sql>
+      <result element="Entries" rowName="Entry">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="name" name="name" xsdType="string"/>
+      </result>
+      <param name="Count" sqlType="INTEGER"/>
+   </query>
+   <operation name="callsleep">
+      <call-query href="sleep">
+         <with-param name="Count" query-param="Count"/>
+      </call-query>
+   </operation>
+   <resource method="GET" path="/add/{Count}">
+      <call-query href="sleep">
+         <with-param name="Count" query-param="Count"/>
+      </call-query>
+   </resource>
+</data>

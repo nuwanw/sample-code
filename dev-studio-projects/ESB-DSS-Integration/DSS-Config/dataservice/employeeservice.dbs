@@ -1,0 +1,76 @@
+<data name="employeeservice" transports="http https local">
+   <config enableOData="false" id="empdb">
+      <property name="carbon_datasource_name">TestDBEmp</property>
+   </config>
+   <query id="insert" returnGeneratedKeys="true" useConfig="empdb">
+      <sql>insert into employee(id,name,dept,salary) values(:ID, :Name,:Dept,:Salary)</sql>
+      <result element="GeneratedKeys" rowName="Entry" useColumnNumbers="true">
+         <element column="1" name="ID" xsdType="integer"/>
+      </result>
+      <param name="ID" sqlType="INTEGER"/>
+      <param name="Name" sqlType="STRING"/>
+      <param name="Dept" sqlType="STRING"/>
+      <param name="Salary" sqlType="INTEGER"/>
+   </query>
+   <query id="update" returnUpdatedRowCount="true" useConfig="empdb">
+      <sql>update employee set salary=:Salary where id=:ID</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+      </result>
+      <param name="Salary" sqlType="INTEGER"/>
+      <param name="ID" sqlType="INTEGER"/>
+   </query>
+   <query id="delete" returnUpdatedRowCount="true" useConfig="empdb">
+      <sql>delete from employee where id=:ID</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+      </result>
+      <param name="ID" sqlType="INTEGER"/>
+   </query>
+   <query id="select" useConfig="empdb">
+      <sql>select id,name,dept,salary from employee where id=:ID</sql>
+      <result element="Employees" rowName="Employee">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="name" name="name" xsdType="string"/>
+         <element column="dept" name="dept" xsdType="string"/>
+         <element column="salary" name="salary" xsdType="string"/>
+      </result>
+      <param name="ID" sqlType="INTEGER"/>
+   </query>
+   <query id="selectAll" useConfig="empdb">
+      <sql>select id,name,dept,salary from employee</sql>
+      <result element="Employees" rowName="Employee">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="name" name="name" xsdType="string"/>
+         <element column="dept" name="dept" xsdType="string"/>
+         <element column="salary" name="salary" xsdType="string"/>
+      </result>
+   </query>
+   <resource method="POST" path="/employee">
+      <call-query href="insert">
+         <with-param name="ID" query-param="ID"/>
+         <with-param name="Name" query-param="Name"/>
+         <with-param name="Dept" query-param="Dept"/>
+         <with-param name="Salary" query-param="Salary"/>
+      </call-query>
+   </resource>
+   <resource method="PUT" path="/employee">
+      <call-query href="update">
+         <with-param name="Salary" query-param="Salary"/>
+         <with-param name="ID" query-param="ID"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="/employee/{ID}">
+      <call-query href="select">
+         <with-param name="ID" query-param="ID"/>
+      </call-query>
+   </resource>
+   <resource method="DELETE" path="/employee/{ID}">
+      <call-query href="delete">
+         <with-param name="ID" query-param="ID"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="/employees">
+      <call-query href="selectAll"/>
+   </resource>
+</data>
