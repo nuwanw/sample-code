@@ -5,4 +5,7 @@
     <artifact name="ConsumeRabbitMQMessage" groupId="com.example.ESB-RabbitMQ-Config.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/ConsumeRabbitMQMessage.xml</file>
     </artifact>
+    <artifact name="InboundRabbitMQ" groupId="com.example.ESB-RabbitMQ-Config.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/InboundRabbitMQ.xml</file>
+    </artifact>
 </artifacts>

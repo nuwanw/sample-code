@@ -11,4 +11,7 @@
     <artifact name="MultipartFormDataAPI" groupId="com.example.ESB-Sample-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/MultipartFormDataAPI.xml</file>
     </artifact>
+    <artifact name="ScriptAccessPayload" groupId="com.example.ESB-Sample-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/ScriptAccessPayload.xml</file>
+    </artifact>
 </artifacts>

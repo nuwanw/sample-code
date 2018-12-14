@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/access" name="ScriptAccessPayload" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <script language="js"><![CDATA[var body = mc.getPayloadXML();
+               var username = body..*::username;
+               print(body);
+               print(username);]]></script>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
