@@ -7,18 +7,17 @@ endpoint http:Listener listener {
 };
 
 // Annotations decorate code.
-// Change the service URL base to '/greeting'.
 @http:ServiceConfig {
     basePath:"/sleep"
 }
 service<http:Service> greeting bind listener {
 
-  // Decorate the 'greet' resource to accept POST requests.
+  //curl -v  -X POST http://localhost:9090/sleep -H "Content-Type:application/xml" -d "<sleep>1000</sleep>"
   @http:ResourceConfig{
     path: "/",
     methods: ["POST"]
   }
-  greet (endpoint caller, http:Request request) {
+  sleepPost (endpoint caller, http:Request request) {
     http:Response response = new;
 
     // Check statement matches the output type of the
@@ -32,5 +31,21 @@ service<http:Service> greeting bind listener {
     response.setXmlPayload(xmlMessage);
     _ = caller -> respond(response);
   }
+// Decorate the 'greet' resource to accept POST requests.
+//curl -v http://localhost:9090/sleep/time/2000
+  @http:ResourceConfig{
+    path: "/time/{count}",
+    methods: ["GET"]
+  }
+  sleepGet (endpoint caller, http:Request request, int count) {
+    http:Response response = new;
+
+    io:println("Sleeping..." + count);
+    runtime:sleep(count);
+    xml xmlMessage = xml `<msg>Hello</msg>`;
+    response.setXmlPayload(xmlMessage);
+    _ = caller -> respond(response);
+  }
+
 }
 
