@@ -1,0 +1,20 @@
+<employees>
+    <employee id="1">
+        <name>Nuwan</name>
+        <age>30</age>
+        <department>
+            <name>eng</name>
+            <location>sl</location>
+        </department>
+        <salary>100000</salary>
+    </employee>
+    <employee id="2">
+        <name>Nuwan</name>
+        <age>30</age>
+        <department>
+            <name>eng</name>
+            <location>sl</location>
+        </department>
+        <salary>100000</salary>
+    </employee>
+</employees>
