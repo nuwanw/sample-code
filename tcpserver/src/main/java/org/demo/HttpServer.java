@@ -23,7 +23,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class TCPServer {
+public class HttpServer {
     private ServerSocket providerSocket;
     private ExecutorService executor = Executors.newFixedThreadPool(5);
     private boolean runServer = true;
@@ -43,20 +43,20 @@ public class TCPServer {
                 }
             }
         });
+
         try {
             providerSocket = new ServerSocket(port, 10);
             System.out.println("Server Started");
             while (runServer) {
                 Socket connection = providerSocket.accept();
                 System.out.println("Client connected");
-                Runnable worker = new ServerWorker(connection);
+                Runnable worker = new HttpServerWorker(connection);
                 executor.execute(worker);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Server Shutting down");
             try {
                 providerSocket.close();
             } catch (IOException e) {
@@ -66,11 +66,10 @@ public class TCPServer {
             while (!executor.isTerminated()) {
             }
         }
-        System.out.println("Exit");
     }
 
     public static void main(String[] args) {
-        TCPServer myServer = new TCPServer();
-        myServer.startServer(8767);
+        HttpServer myServer = new HttpServer();
+        myServer.startServer(9090);
     }
 }

@@ -35,11 +35,13 @@ public class ServerWorker implements Runnable {
 
     public void run() {
         try {
+
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             PrintWriter out = new PrintWriter(connection.getOutputStream(), true);
 
             System.out.println("Message received " + in.readLine());
-            out.write("Accepted\n");
+            out.write("hello Client");
+            out.write("\n");
             out.flush();
             System.out.println("ack sent");
 
