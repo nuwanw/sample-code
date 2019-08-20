@@ -17,5 +17,6 @@
         <parameter name="transport.jms.ContentType">application/json</parameter>
         <parameter name="transport.jms.DurableSubscriberName">test_inbound_sbscrb</parameter>
         <parameter name="transport.jms.SharedSubscription">false</parameter>
+        <parameter name="transport.jms.ResetConnectionOnPollingSuspension">false</parameter>
     </parameters>
 </inboundEndpoint>

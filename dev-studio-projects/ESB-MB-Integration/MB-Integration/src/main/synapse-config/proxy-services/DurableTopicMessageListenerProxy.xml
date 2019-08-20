@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="DurableTopicMessageListenerProxy" startOnLoad="true" transports="jms" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full">
+                <property name="Server" value="Received from WSO2 MB Durable Topic"/>
+            </log>
+            <drop/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.jms.DestinationType">topic</parameter>
+    <parameter name="transport.jms.DurableSubscriberName">test_proxy_sbscrb</parameter>
+    <parameter name="transport.jms.Destination">testinboundtopicdurable</parameter>
+    <parameter name="transport.jms.ContentType">
+        <rules>
+            <jmsProperty>contentType</jmsProperty>
+            <default>application/json</default>
+        </rules>
+    </parameter>
+    <parameter name="transport.jms.SubscriptionDurable">true</parameter>
+    <parameter name="transport.jms.DurableSubscriberClientID">test_proxy_sbscrb</parameter>
+    <parameter name="transport.jms.ConnectionFactory">myTopicConnectionFactory</parameter>
+</proxy>

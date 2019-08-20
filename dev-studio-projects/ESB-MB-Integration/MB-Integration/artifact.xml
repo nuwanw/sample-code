@@ -29,4 +29,10 @@
     <artifact name="PublishMessageToQueueAPI2" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/PublishMessageToQueueAPI2.xml</file>
     </artifact>
+    <artifact name="DurableTopicMessageListenerProxy" groupId="com.example.MB-Integration.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/DurableTopicMessageListenerProxy.xml</file>
+    </artifact>
+    <artifact name="PublishMessageToDurableTopicAPI" groupId="com.example.MB-Integration.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/PublishMessageToDurableTopicAPI.xml</file>
+    </artifact>
 </artifacts>
