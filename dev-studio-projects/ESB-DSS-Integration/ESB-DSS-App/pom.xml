@@ -9,20 +9,12 @@
   <name>ESB-DSS-App</name>
   <description>ESB-DSS-App</description>
   <properties>
-    <com.example.DSS-Config.dataservice_._sleep>capp/DataServicesServer</com.example.DSS-Config.dataservice_._sleep>
+    <com.example.ESB-DSS-Config-Registry.resource_._UT-Policy>capp/DataServicesServer</com.example.ESB-DSS-Config-Registry.resource_._UT-Policy>
     <com.example.ESB-DSS-Config.endpoint_._EmployeeDSSEP>capp/EnterpriseServiceBus</com.example.ESB-DSS-Config.endpoint_._EmployeeDSSEP>
-    <com.example.DSS-Config.dataservice_._employeeservice>capp/DataServicesServer</com.example.DSS-Config.dataservice_._employeeservice>
     <com.example.ESB-DSS-Config.api_._Employee>capp/EnterpriseServiceBus</com.example.ESB-DSS-Config.api_._Employee>
-    <com.example.DSS-Config.dataservice_._empservice>capp/DataServicesServer</com.example.DSS-Config.dataservice_._empservice>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>com.example.DSS-Config.dataservice</groupId>
-      <artifactId>employeeservice</artifactId>
-      <version>1.0.0</version>
-      <type>dbs</type>
-    </dependency>
     <dependency>
       <groupId>com.example.ESB-DSS-Config.api</groupId>
       <artifactId>Employee</artifactId>
@@ -30,16 +22,10 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.example.DSS-Config.dataservice</groupId>
-      <artifactId>sleep</artifactId>
+      <groupId>com.example.ESB-DSS-Config-Registry.resource</groupId>
+      <artifactId>UT-Policy</artifactId>
       <version>1.0.0</version>
-      <type>dbs</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.DSS-Config.dataservice</groupId>
-      <artifactId>empservice</artifactId>
-      <version>1.0.0</version>
-      <type>dbs</type>
+      <type>zip</type>
     </dependency>
     <dependency>
       <groupId>com.example.ESB-DSS-Config.endpoint</groupId>

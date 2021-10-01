@@ -8,4 +8,7 @@
     <artifact name="sleep" groupId="com.example.DSS-Config.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
         <file>dataservice/sleep.dbs</file>
     </artifact>
+    <artifact name="SecureDataService" groupId="com.example.DSS-Config.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/SecureDataService.dbs</file>
+    </artifact>
 </artifacts>

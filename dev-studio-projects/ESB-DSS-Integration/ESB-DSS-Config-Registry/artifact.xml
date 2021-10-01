@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="UT-Policy" groupId="com.example.ESB-DSS-Config-Registry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>UT-Policy.xml</file>
+            <path>/_system/governance/policies</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+        </item>
+    </artifact>
+</artifacts>

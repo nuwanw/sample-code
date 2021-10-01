@@ -1,0 +1,22 @@
+<data name="SecureDataService" serviceGroup="" serviceNamespace="" transports="https">
+    <config id="empdb123">
+        <property name="carbon_datasource_name">TestDBEmp</property>
+    </config>
+    <query id="select" useConfig="empdb123">
+        <sql>select id,name,dept,salary from employee where id=:ID</sql>
+        <result element="Entries" rowName="Entry">
+            <element column="id" name="id" xsdType="string"/>
+            <element column="name" name="name" xsdType="string"/>
+            <element column="dept" name="dept" xsdType="string"/>
+            <element column="salary" name="salary" requiredRoles="admin" xsdType="string"/>
+        </result>
+        <param name="ID" sqlType="STRING"/>
+    </query>
+    <operation name="select">
+        <call-query href="select">
+            <with-param name="ID" query-param="ID"/>
+        </call-query>
+    </operation>
+    <policy key="gov:policies/UT-Policy.xml"/>
+    <enableSec>true</enableSec>
+</data>

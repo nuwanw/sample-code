@@ -3,5 +3,5 @@
     <parameter name="cronExpression">*/5 * * ? * *</parameter>
     <parameter name="sequence">logInMemoryMessageSeq</parameter>
     <parameter name="is.active">true</parameter>
-    <parameter name="concurrency">2</parameter>
+    <parameter name="concurrency">1</parameter>
 </messageProcessor>
