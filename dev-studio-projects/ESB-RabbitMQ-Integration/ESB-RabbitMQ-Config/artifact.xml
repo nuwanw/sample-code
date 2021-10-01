@@ -8,4 +8,19 @@
     <artifact name="InboundRabbitMQ" groupId="com.example.ESB-RabbitMQ-Config.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/inbound-endpoints/InboundRabbitMQ.xml</file>
     </artifact>
+    <artifact name="RabbitMQTestStore" groupId="com.example.ESB-RabbitMQ-Config.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/RabbitMQTestStore.xml</file>
+    </artifact>
+    <artifact name="RabbitMQStoreAPI" groupId="com.example.ESB-RabbitMQ-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/RabbitMQStoreAPI.xml</file>
+    </artifact>
+    <artifact name="RabbitMQStoreAPI2" groupId="com.example.ESB-RabbitMQ-Config.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/RabbitMQStoreAPI2.xml</file>
+    </artifact>
+    <artifact name="RabbitMQTestStore" groupId="com.example.ESB-RabbitMQ-Config.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/RabbitMQTestStore.xml</file>
+    </artifact>
+    <artifact name="RabbitMQTestStore2" groupId="com.example.ESB-RabbitMQ-Config.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/RabbitMQTestStore2.xml</file>
+    </artifact>
 </artifacts>

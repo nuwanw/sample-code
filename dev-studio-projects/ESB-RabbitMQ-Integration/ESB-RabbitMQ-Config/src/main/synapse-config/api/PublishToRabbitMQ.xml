@@ -11,7 +11,15 @@
             <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
             <call>
                 <endpoint>
-                    <address uri="rabbitmq:/fromesb?rabbitmq.server.host.name=localhost&amp;rabbitmq.server.port=5672&amp;rabbitmq.server.user.name=guest&amp;rabbitmq.server.password=guest&amp;rabbitmq.queue.name=fromesb&amp;rabbitmq.exchange.name=amq.direct"/>
+                    <address uri="rabbitmq:/fromesb?rabbitmq.server.host.name=localhost&amp;rabbitmq.server.port=5672&amp;rabbitmq.server.user.name=guest&amp;rabbitmq.server.password=guest&amp;rabbitmq.queue.name=fromesb&amp;rabbitmq.exchange.name=amq.direct">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>1</progressionFactor>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </address>
                 </endpoint>
             </call>
             <property name="OUT_ONLY" scope="default" type="STRING" value="fasle"/>
