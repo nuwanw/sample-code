@@ -1,7 +1,8 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/runtime;
-import ballerina/io;
+import ballerina/lang.'int as ints;
+//import ballerina/io;
 
 // By default, Ballerina exposes an HTTP service via HTTP/1.1.
 // Annotations decorate code.
@@ -15,9 +16,12 @@ service sleep on new http:Listener(9090) {
         http:Response response = new;
         xml|error reqPayload =  request.getXmlPayload();
         xml xmlPayload  = <xml> reqPayload;
-        string countValue = xmlPayload.getTextValue();
+//        log:printInfo(xmlPayload/*);
+        xml countValueXml = xmlPayload/*;
+        string countValue = countValueXml.toString();
         log:printInfo("Sleeping..." + countValue);
-        int|error count = int.convert(countValue);
+       //int|error count = int.convert(countValue);
+        int|error count = ints:fromString(countValue);
         if (count is int) {
             runtime:sleep(<int>count);
             xml xmlMessage = xml `<msg>Hello</msg>`;
@@ -41,7 +45,7 @@ service sleep on new http:Listener(9090) {
     }
     resource function sleepOnGet(http:Caller caller, http:Request request, int count) {
         http:Response response = new;
-        log:printInfo("Sleeping..." + count);
+        //log:printInfo("Sleeping..." + count);
         runtime:sleep(count);
         xml xmlMessage = xml `<msg>Hello</msg>`;
         response.setXmlPayload(xmlMessage);
