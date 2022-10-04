@@ -46,7 +46,7 @@ public class HttpServer {
 
         try {
             providerSocket = new ServerSocket(port, 10);
-            System.out.println("Server Started");
+            System.out.println("HTTP Server Started");
             while (runServer) {
                 Socket connection = providerSocket.accept();
                 System.out.println("Client connected");

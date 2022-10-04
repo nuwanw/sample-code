@@ -37,33 +37,66 @@ public class HttpServerWorker implements Runnable {
 
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             out = new PrintWriter(connection.getOutputStream(), true);
+do{
+
 
             System.out.println("Message received " + in.readLine());
+            System.out.println("Message received " + in.readLine());
+            System.out.println("Message received " + in.readLine());
+            System.out.println("Message received " + in.readLine());
+            System.out.println("Message received " + in.readLine());
+
+
+//            while (in.readLine() != null) {
+//                System.out.println("readline");
+//            }
 
             //            out.write("HTTP/1.1 204 NO Content\r\n");
-            out.write("HTTP/1.1 200 OK\r\n");
-            out.write("Content-Type: application/xml\r\n");
-            out.write("Content-Length: 16\r\n");
+            out.write("HTTP/1.1 200 Accepted\r\n");
+            out.write("Content-Type: application/json\r\n");
+            out.write("Content-Length: 23\r\n");
             out.write("Server: tcp-server/1.0\r\n");
             //            out.write("Connection: Keep-Alive\r\n");
-            out.write("Connection: close\r\n");
+            out.write("Connection: keep-alive\r\n");
             out.write("\r\n");
             out.flush();
 
-            out.write("<msg>hello</msg>");
+            out.write("[\"Ford\", \"BMW\", \"Fiat\"]");
+//            for(int i=0; i<9000; i++) {
+//                out.write("a");
+//            }
+//            out.write("<x>hello</x>");
+//            out.write("</msg>");
             out.flush();
+
+}while (true);
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
                 if (out != null) {
                     out.close();
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
                 if (in != null) {
                     in.close();
                 }
-                connection.close();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+//                connection.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
