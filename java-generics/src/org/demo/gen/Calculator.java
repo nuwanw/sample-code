@@ -1,15 +1,12 @@
 package org.demo.gen;
 
-import org.demo.gen.operation.Addition;
-import org.demo.gen.operation.Division;
-import org.demo.gen.operation.Multiplication;
-import org.demo.gen.operation.Subtraction;
+import org.demo.gen.operation.*;
 
 public class Calculator<T extends Number> implements ArithmeticExpression<T> {
 
     @Override
     public Number add(T num1, T num2) {
-        ArithmeticOperation operator = new Addition();
+        AbstractArithmeticOperation operator = new Addition();
         return operator.execute(num1, num2);
     }
 

@@ -1,11 +1,9 @@
 package org.demo.gen.operation;
 
-import org.demo.gen.ArithmeticOperation;
-
-public class Addition implements ArithmeticOperation {
+public class Addition extends AbstractArithmeticOperation {
 
     @Override
-    public <T extends Number> Number execute(T num1, T num2) {
+    protected <T extends Number> Number doExecute(T num1, T num2) {
         return num1.doubleValue() + num2.doubleValue();
     }
 
