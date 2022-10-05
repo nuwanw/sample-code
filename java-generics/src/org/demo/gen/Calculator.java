@@ -6,7 +6,7 @@ public class Calculator<T extends Number> implements ArithmeticExpression<T> {
 
     @Override
     public Number add(T num1, T num2) {
-        AbstractArithmeticOperation operator = new Addition();
+        ArithmeticOperation operator = new Addition();
         return operator.execute(num1, num2);
     }
 
@@ -26,6 +26,10 @@ public class Calculator<T extends Number> implements ArithmeticExpression<T> {
     public Number multiply(T num1, T num2) {
         ArithmeticOperation operator = new Multiplication();
         return operator.execute(num1, num2);
+    }
+
+    public Number calculate(T num1, T num2, ArithmeticOperation operator) {
+       return operator.execute(num1, num2);
     }
 
 }
