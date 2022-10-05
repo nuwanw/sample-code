@@ -7,15 +7,25 @@ import org.demo.gen.operation.Subtraction;
 
 public class ArithmeticOperationFactory {
 
-    public static enum OPERATOR{ADD, SUBTRACT, DIVIDE, MULTIPLY};
+    public enum OPERATOR {
+        ADD,
+        SUBTRACT,
+        DIVIDE,
+        MULTIPLY
+    };
 
     public static ArithmeticOperation getOperator(OPERATOR operator) {
-        switch (operator){
-            case ADD : return new Addition();
-            case SUBTRACT:return new Subtraction();
-            case DIVIDE: return new Division();
-            case MULTIPLY:return new Multiplication();
-        };
+        switch (operator) {
+            case ADD:
+                return new Addition();
+            case SUBTRACT:
+                return new Subtraction();
+            case DIVIDE:
+                return new Division();
+            case MULTIPLY:
+                return new Multiplication();
+        }
+        ;
         return null;
     }
 }

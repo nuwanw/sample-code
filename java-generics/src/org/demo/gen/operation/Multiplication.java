@@ -6,7 +6,7 @@ public class Multiplication implements ArithmeticOperation {
 
     @Override
     public <T extends Number> Number execute(T num1, T num2) {
-        if(num1 instanceof Integer && num2 instanceof Integer) {
+        if (num1 instanceof Integer && num2 instanceof Integer) {
             return multiply(num1.intValue(), num2.intValue());
         } else {
             return multiply(num1.doubleValue(), num2.doubleValue());

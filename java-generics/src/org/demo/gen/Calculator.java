@@ -11,7 +11,7 @@ public class Calculator<T extends Number> implements ArithmeticExpression<T> {
     }
 
     @Override
-    public  Number subtract(T num1, T num2) {
+    public Number subtract(T num1, T num2) {
         ArithmeticOperation operator = ArithmeticOperationFactory.getOperator(ArithmeticOperationFactory.OPERATOR.SUBTRACT);
         return operator.execute(num1, num2);
     }
@@ -29,7 +29,7 @@ public class Calculator<T extends Number> implements ArithmeticExpression<T> {
     }
 
     public Number calculate(T num1, T num2, ArithmeticOperation operator) {
-       return operator.execute(num1, num2);
+        return operator.execute(num1, num2);
     }
 
 }

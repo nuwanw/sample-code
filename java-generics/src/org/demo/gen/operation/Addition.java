@@ -4,7 +4,7 @@ public class Addition extends AbstractArithmeticOperation {
 
     @Override
     protected <T extends Number> Number doExecute(T num1, T num2) {
-        if(num1 instanceof Integer && num2 instanceof Integer) {
+        if (num1 instanceof Integer && num2 instanceof Integer) {
             return add(num1.intValue(), num2.intValue());
         } else {
             return add(num1.doubleValue(), num2.doubleValue());
