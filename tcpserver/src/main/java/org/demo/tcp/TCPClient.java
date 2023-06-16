@@ -15,7 +15,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.demo;
+package org.demo.tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,12 +41,14 @@ public class TCPClient {
                                 new InputStreamReader(clientSocket.getInputStream()));
                         // int counter = 10000000;
 
-                        int requestCount = 1;
+                        int requestCount = 100;
                         for (int i = 0; i < requestCount; i++) {
                             //counter = counter + 1;
-                            System.out.println("sending response");
-                            outToServer.write("Hello Server");
+                            System.out.println("sending request " + i);
+                            outToServer.write("Hello Server "+ i);
                             outToServer.write("\n");
+                            //Thread.sleep(100);
+                           // outToServer.write("");
                             outToServer.flush();
                         }
                         for (int i = 0; i < requestCount; i++) {
@@ -67,7 +69,9 @@ public class TCPClient {
                         System.out.println("close");
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                   } //catch (InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
                 }
             });
 

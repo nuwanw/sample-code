@@ -15,48 +15,52 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.demo;
+package org.demo.https;
+
+import org.demo.HttpServerWorker;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLServerSocketFactory;
 
-public class TCPServer {
+import static org.demo.Configuration.KEYSTORE_PASS;
+import static org.demo.Configuration.RESOURCE_DIR;
+
+public class HttpsServer {
+    private ExecutorService executor = Executors.newFixedThreadPool(25);
+    private ServerSocketFactory serverSocketFactory;
     private ServerSocket providerSocket;
-    private ExecutorService executor = Executors.newFixedThreadPool(5);
     private boolean runServer = true;
 
     public void startServer(int port) {
+
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-                runServer = false;
-                System.out.println("Server Shutting down ");
-                try {
-                    providerSocket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                executor.shutdown();
-                while (!executor.isTerminated()) {
-                }
+                stopServer();
             }
         });
+
         try {
-            providerSocket = new ServerSocket(port, 10);
-            System.out.println("Server Started");
+            System.setProperty("javax.net.ssl.keyStore", RESOURCE_DIR + "wso2carbon.jks");
+            System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASS);
+            serverSocketFactory = SSLServerSocketFactory.getDefault();
+            providerSocket = serverSocketFactory.createServerSocket(port);
+            System.out.println("HTTPS Server Started on " + port);
             while (runServer) {
                 Socket connection = providerSocket.accept();
                 System.out.println("Client connected");
-                Runnable worker = new ServerWorker(connection);
+                //connection.setSoTimeout(15000);
+                Runnable worker = new HttpServerWorker(connection);
                 executor.execute(worker);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Server Shutting down");
             try {
                 providerSocket.close();
             } catch (IOException e) {
@@ -66,11 +70,24 @@ public class TCPServer {
             while (!executor.isTerminated()) {
             }
         }
-        System.out.println("Exit");
     }
 
     public static void main(String[] args) {
-        TCPServer myServer = new TCPServer();
-        myServer.startServer(8767);
+        HttpsServer myServer = new HttpsServer();
+        myServer.startServer(8273);
+//        myServer.startServer(9090);
+    }
+
+    private void stopServer() {
+        runServer = false;
+        System.out.println("Server Shutting down ");
+        try {
+            providerSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        executor.shutdown();
+        while (!executor.isTerminated()) {
+        }
     }
 }

@@ -15,9 +15,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.demo.http;
-
-import org.demo.HttpServerWorker;
+package org.demo.tcp;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -25,7 +23,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class HttpServer {
+public class TCPServer {
     private ServerSocket providerSocket;
     private ExecutorService executor = Executors.newFixedThreadPool(5);
     private boolean runServer = true;
@@ -33,25 +31,32 @@ public class HttpServer {
     public void startServer(int port) {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-                stopServer();
+                runServer = false;
+                System.out.println("Server Shutting down ");
+                try {
+                    providerSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                executor.shutdown();
+                while (!executor.isTerminated()) {
+                }
             }
         });
-
         try {
             providerSocket = new ServerSocket(port, 10);
-            System.out.println("HTTP Server Started on port " + port);
+            System.out.println("Server Started");
             while (runServer) {
                 Socket connection = providerSocket.accept();
-               // connection.setSoTimeout(10000);
-
                 System.out.println("Client connected");
-                Runnable worker = new HttpServerWorker(connection);
+                Runnable worker = new TCPServerWorker(connection);
                 executor.execute(worker);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("Server Shutting down");
             try {
                 providerSocket.close();
             } catch (IOException e) {
@@ -61,24 +66,11 @@ public class HttpServer {
             while (!executor.isTerminated()) {
             }
         }
+        System.out.println("Exit");
     }
 
     public static void main(String[] args) {
-        HttpServer myServer = new HttpServer();
-        myServer.startServer(8290);
+        TCPServer myServer = new TCPServer();
+        myServer.startServer(8767);
     }
-
-    private void stopServer() {
-        runServer = false;
-        System.out.println("Server Shutting down ");
-        try {
-            providerSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        executor.shutdown();
-        while (!executor.isTerminated()) {
-        }
-    }
-    
 }
