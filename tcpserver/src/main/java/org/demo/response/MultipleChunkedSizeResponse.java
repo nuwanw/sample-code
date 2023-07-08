@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 import static org.demo.Configuration.RESOURCE_DIR;
 
-public class InvalidChunkedSizeResponse implements ResponseWriter {
+public class MultipleChunkedSizeResponse implements ResponseWriter {
     @Override
     public void write(PrintWriter out) {
         out.write("HTTP/1.1 200 OK\r\n");
@@ -29,7 +29,7 @@ public class InvalidChunkedSizeResponse implements ResponseWriter {
             byte[] buffer = new byte[chunkSize];
 
             count = in1.read(buffer);
-            out.print(Integer.toHexString(8187) + "\r\n");
+            out.print(Integer.toHexString(count) + "\r\n");
 
             out.write(new String(buffer), 0, count);
             out.print("\r\n");

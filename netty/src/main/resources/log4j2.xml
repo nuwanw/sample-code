@@ -1,0 +1,13 @@
+<Configuration>
+    <Appenders>
+        <File name="FILE" fileName="server.log" append="true">
+<!--            <PatternLayout pattern="%d %level [%t] %logger{10} [%file:%line] %msg%n"/>-->
+            <PatternLayout pattern="%d %level [%t] [%file:%line] %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="FILE"/>
+        </Root>
+    </Loggers>
+</Configuration>
