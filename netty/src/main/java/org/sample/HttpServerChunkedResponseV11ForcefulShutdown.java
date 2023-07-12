@@ -1,7 +1,6 @@
 package org.sample;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -13,15 +12,12 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.SslHandler;
 import io.netty.handler.ssl.SslProvider;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import io.netty.util.CharsetUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.SSLEngine;
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -30,17 +26,14 @@ import java.util.concurrent.atomic.AtomicInteger;
  * chunk.length is optional
  */
 
-public class HttpsServerChunkedResponseV11ForcefulShutdown {
+public class HttpServerChunkedResponseV11ForcefulShutdown {
 
-    private static final Logger logger = LogManager.getLogger(HttpsServerChunkedResponseV11ForcefulShutdown.class);
-    private static final int PORT = 8263;
-    private static final String CERTIFICATE_PATH = "public.crt";
-    private static final String PRIVATE_KEY_PATH = "private.key";
+    private static final Logger logger = LogManager.getLogger(HttpServerChunkedResponseV11ForcefulShutdown.class);
+    private static final int PORT = 8090;
 
     private static final String RESPONSE_FILE_PATH = System.getProperty("response.file.path");
     private static final String CHUNK_LENGTH = System.getProperty("chunk.length");
     private static int chunkLength = -1;
-    private static final int MAX_CONTENT_LENGTH = 1 * 1024 * 1024;
 
 
     public static void main(String[] args) throws Exception {
@@ -57,11 +50,6 @@ public class HttpsServerChunkedResponseV11ForcefulShutdown {
             System.out.println("Chunk length property define,  chunk length will be " + CHUNK_LENGTH);
             logger.info("Chunk length property define,  chunk length will be " + CHUNK_LENGTH);
         }
-        // Load SSL context from the certificate and private key files
-        SslContext sslContext = SslContextBuilder
-                .forServer(new File(CERTIFICATE_PATH), new File(PRIVATE_KEY_PATH))
-                .sslProvider(SslProvider.JDK)
-                .build();
 
         // Configure server
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
@@ -77,25 +65,13 @@ public class HttpsServerChunkedResponseV11ForcefulShutdown {
                         @Override
                         protected void initChannel(SocketChannel ch) {
                             try {
-                                SSLEngine sslEngine = sslContext.newEngine(ch.alloc());
-                                sslEngine.setUseClientMode(false);
-                                sslEngine.setNeedClientAuth(false);
-                                SslHandler sslHandler = new CustomSslHandler(sslEngine);
-                                ch.pipeline().addLast(sslHandler);
                                 ch.pipeline().addLast(new HttpServerCodec());
-                                ch.pipeline().addLast(new HttpObjectAggregator(MAX_CONTENT_LENGTH)); // Aggregate HTTP requests, max payload length
+                                ch.pipeline().addLast(new HttpObjectAggregator(65536)); // Aggregate HTTP requests
                                 ch.pipeline().addLast(new ChunkedWriteHandler()); // Enable chunked writing
                                 ch.pipeline().addLast(new SimpleChannelInboundHandler<FullHttpRequest>() {
                                     @Override
                                     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
                                         if (request.method() == HttpMethod.GET || request.method() == HttpMethod.POST) {
-                                            if(request.method() == HttpMethod.POST) {
-                                                // Extract request body
-                                                ByteBuf content = request.content();
-                                                String requestBody = content.toString(CharsetUtil.UTF_8);
-                                                System.out.println("Received POST request body: " + requestBody);
-                                            }
-
                                             // Read response message from file
                                             byte[] responseBytes = Files.readAllBytes(new File(RESPONSE_FILE_PATH).toPath());
 
@@ -127,13 +103,6 @@ public class HttpsServerChunkedResponseV11ForcefulShutdown {
                                             LastHttpContent lastChunk = LastHttpContent.EMPTY_LAST_CONTENT;
                                             ctx.write(lastChunk).addListener(ChannelFutureListener.CLOSE);
                                             ctx.flush();
-                                        } else {
-                                            // Invalid request method, send error response
-                                            FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.METHOD_NOT_ALLOWED);
-                                            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
-                                            response.content().writeBytes("Invalid request method".getBytes(StandardCharsets.UTF_8));
-
-                                            ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
                                         }
                                     }
                                 });
@@ -151,18 +120,6 @@ public class HttpsServerChunkedResponseV11ForcefulShutdown {
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
-        }
-    }
-
-    private static class CustomSslHandler extends SslHandler {
-
-        public CustomSslHandler(SSLEngine engine) {
-            super(engine);
-        }
-
-        @Override
-        public void close(ChannelHandlerContext ctx, ChannelPromise promise) {
-            ctx.close(promise);
         }
     }
 

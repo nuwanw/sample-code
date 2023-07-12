@@ -41,7 +41,7 @@ public class HttpsServerChunkedResponse {
                                     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
                                         if (msg instanceof HttpRequest) {
                                             HttpRequest request = (HttpRequest) msg;
-                                            if (request.method() == HttpMethod.GET) {
+                                            if (request.method() == HttpMethod.GET || request.method() == HttpMethod.POST) {
                                                 // Read response message from file
                                                 byte[] responseBytes = Files.readAllBytes(new File(RESPONSE_FILE_PATH).toPath());
 

@@ -23,9 +23,9 @@ import java.nio.file.Files;
 public class HttpsServerChunkedResponseV6ForcefulShutdown {
 
     private static final int PORT = 8263;
-    private static final String CERTIFICATE_PATH = "sample-backend/public.crt";
-    private static final String PRIVATE_KEY_PATH = "sample-backend/private.key";
-    private static final String RESPONSE_FILE_PATH = "large-payload.json";
+    private static final String CERTIFICATE_PATH = "public.crt";
+    private static final String PRIVATE_KEY_PATH = "private.key";
+    private static final String RESPONSE_FILE_PATH = "100kb-payload.json";
 
     public static void main(String[] args) throws Exception {
         // Load SSL context from the certificate and private key files
@@ -55,7 +55,7 @@ public class HttpsServerChunkedResponseV6ForcefulShutdown {
                                 ch.pipeline().addLast(new SimpleChannelInboundHandler<FullHttpRequest>() {
                                     @Override
                                     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-                                        if (request.method() == HttpMethod.GET) {
+                                        if (request.method() == HttpMethod.GET || request.method() == HttpMethod.POST) {
                                             // Read response message from file
                                             byte[] responseBytes = Files.readAllBytes(new File(RESPONSE_FILE_PATH).toPath());
 

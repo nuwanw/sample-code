@@ -68,7 +68,7 @@ public class HttpsServerChunkedResponseV9ForcefulShutdown {
                                 ch.pipeline().addLast(new SimpleChannelInboundHandler<FullHttpRequest>() {
                                     @Override
                                     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-                                        if (request.method() == HttpMethod.GET) {
+                                        if (request.method() == HttpMethod.GET || request.method() == HttpMethod.POST) {
                                             // Read response message from file
                                             byte[] responseBytes = Files.readAllBytes(new File(RESPONSE_FILE_PATH).toPath());
 
