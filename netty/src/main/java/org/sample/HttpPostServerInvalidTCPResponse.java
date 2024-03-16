@@ -62,11 +62,18 @@ public class HttpPostServer {
                                         for (Map.Entry<String, String> entry : params.entrySet()) {
                                             System.out.println("Parameter: " + entry.getKey() + " = " + entry.getValue());
                                         }
-
+//                                        try {
+//                                            Thread.sleep(5000);
+//                                        } catch (InterruptedException e) {
+//                                            throw new RuntimeException(e);
+//                                        }
                                         // Prepare response
-                                        String responseBody = "POST request received";
+//                                        String responseBody = "POST request received";
+                                        String responseBody = "{\"msg\": \"Hello\"}";
                                         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-                                        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
+//                                        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
+                                        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
+                                        response.headers().set("Connection", HttpHeaderValues.KEEP_ALIVE);
                                         response.content().writeBytes(responseBody.getBytes(StandardCharsets.UTF_8));
 
                                         // Send response
